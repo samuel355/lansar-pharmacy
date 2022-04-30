@@ -100,12 +100,6 @@
                   </tr>
                   <tr>
                     <?php
-                      //echo $date;
-                      $total = 0;
-                      $query = "SELECT TOTAL_AMOUNT FROM purchases WHERE PURCHASE_DATE = '$date'";
-                      $result = mysqli_query($con, $query);
-                      while($row = mysqli_fetch_array($result))
-                        $total = $total + $row['TOTAL_AMOUNT'];
                     }
                     ?>
                     

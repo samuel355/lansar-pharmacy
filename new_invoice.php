@@ -33,7 +33,7 @@
       	</div>
       </div>
     </div>
-    <!-- including side navigations -->
+    <!-- including side navigation -->
     <?php include("sections/sidenav.html"); ?>
 
     <div class="container-fluid">
