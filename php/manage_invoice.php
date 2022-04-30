@@ -75,22 +75,25 @@
   function printInvoice($invoice_number) {
     require "db_connection.php";
     if($con) {
-      $query = "SELECT * FROM sales INNER JOIN customers ON sales.CUSTOMER_ID = customers.ID WHERE INVOICE_NUMBER = $invoice_number";
+      $query = "SELECT * FROM invoices INNER JOIN customers ON invoices.CUSTOMER_ID = customers.ID WHERE invoices.INVOICE_ID = $invoice_number";
       $result = mysqli_query($con, $query);
       $row = mysqli_fetch_array($result);
+     
       $customer_name = $row['NAME'];
       $address = $row['ADDRESS'];
       $contact_number = $row['CONTACT_NUMBER'];
       $doctor_name = $row['DOCTOR_NAME'];
       $doctor_address = $row['DOCTOR_ADDRESS'];
 
-      $query = "SELECT * FROM invoices WHERE INVOICE_NUMBER = $invoice_number";
+    
+      $query = "SELECT * FROM invoices WHERE INVOICE_ID = $invoice_number";
       $result = mysqli_query($con, $query);
       $row = mysqli_fetch_array($result);
       $invoice_date = $row['INVOICE_DATE'];
       $total_amount = $row['TOTAL_AMOUNT'];
       $total_discount = $row['TOTAL_DISCOUNT'];
       $net_total = $row['NET_TOTAL'];
+      
     }
 
     ?>
@@ -100,7 +103,7 @@
     <link rel="stylesheet" href="css/home.css">
     <div class="row">
       <div class="col-md-1"></div>
-      <div class="col-md-10 h3" style="color: #ff5252;">Customer Invoice<span class="float-right">Invoice Number : <?php echo $invoice_number; ?></span></div>
+      <div class="col-md-10 h3" style="color: #ff5252;">Customer Invoice<span class="float-right">Invoice Number : <?php echo $invoice_number; ?></span></div> <br>
     </div>
     <div class="row font-weight-bold">
       <div class="col-md-1"></div>
@@ -122,7 +125,7 @@
       <div class="col-md-3"></div>
 
       <?php
-
+      /*
       $query = "SELECT * FROM admin_credentials";
       $result = mysqli_query($con, $query);
       $row = mysqli_fetch_array($result);
@@ -130,14 +133,15 @@
       $p_address = $row['ADDRESS'];
       $p_email = $row['EMAIL'];
       $p_contact_number = $row['CONTACT_NUMBER'];
+      */
       ?>
 
       <div class="col-md-4">
         <span class="h4">Shop Details : </span><br><br>
-        <span class="font-weight-bold"><?php echo $p_name; ?></span><br>
-        <span class="font-weight-bold"><?php echo $p_address; ?></span><br>
-        <span class="font-weight-bold"><?php echo $p_email; ?></span><br>
-        <span class="font-weight-bold">Mob. No.: <?php echo $p_contact_number; ?></span>
+        <span class="font-weight-bold"><?php //echo $p_name; ?></span><br>
+        <span class="font-weight-bold"><?php //echo $p_address; ?></span><br>
+        <span class="font-weight-bold"><?php //echo $p_email; ?></span><br>
+        <span class="font-weight-bold">Mob. No.: <?php //echo $p_contact_number; ?></span>
       </div>
       <div class="col-md-1"></div>
     </div>
@@ -162,6 +166,7 @@
           </thead>
           <tbody>
             <?php
+            /*
               $seq_no = 0;
               $total = 0;
               $query = "SELECT * FROM sales WHERE INVOICE_NUMBER = $invoice_number";
@@ -170,30 +175,31 @@
                 $seq_no++;
                 ?>
                 <tr>
-                  <td><?php echo $seq_no; ?></td>
-                  <td><?php echo $row['MEDICINE_NAME']; ?></td>
-                  <td><?php echo $row['EXPIRY_DATE']; ?></td>
-                  <td><?php echo $row['QUANTITY']; ?></td>
-                  <td><?php echo $row['MRP']; ?></td>
-                  <td><?php echo $row['DISCOUNT']."%"; ?></td>
-                  <td><?php echo $row['TOTAL']; ?></td>
+                  <td><?php //echo $seq_no; ?></td>
+                  <td><?php //echo $row['MEDICINE_NAME']; ?></td>
+                  <td><?php //echo $row['EXPIRY_DATE']; ?></td>
+                  <td><?php //echo $row['QUANTITY']; ?></td>
+                  <td><?php //echo $row['MRP']; ?></td>
+                  <td><?php //echo $row['DISCOUNT']."%"; ?></td>
+                  <td><?php //echo $row['TOTAL']; ?></td>
                 </tr>
                 <?php
               }
+              */
             ?>
           </tbody>
           <tfoot class="font-weight-bold">
             <tr style="text-align: right; font-size: 18px;">
               <td colspan="6">&nbsp;Total Amount</td>
-              <td><?php echo $total_amount; ?></td>
+              <td><?php //echo $total_amount; ?></td>
             </tr>
             <tr style="text-align: right; font-size: 18px;">
               <td colspan="6">&nbsp;Total Discount</td>
-              <td><?php echo $total_discount; ?></td>
+              <td><?php //echo $total_discount; ?></td>
             </tr>
             <tr style="text-align: right; font-size: 22px;">
               <td colspan="6" style="color: green;">&nbsp;Net Amount</td>
-              <td class="text-primary"><?php echo $net_total; ?></td>
+              <td class="text-primary"><?php //echo $net_total; ?></td>
             </tr>
           </tfoot>
         </table>

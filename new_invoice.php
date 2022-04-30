@@ -164,7 +164,7 @@
             </div>
           </div>
 
-          <div id="invoice_acknowledgement" class="col-md-12 h5 text-success font-weight-bold text-center" style="font-family: sans-serif;"</div>
+          <div id="invoice_acknowledgement" class="col-md-12 h5 text-success font-weight-bold text-center" style="font-family: sans-serif;"> </div>
 
         </div>
         <!-- form content end -->
