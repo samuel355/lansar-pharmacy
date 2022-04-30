@@ -124,24 +124,12 @@
       </div>
       <div class="col-md-3"></div>
 
-      <?php
-      /*
-      $query = "SELECT * FROM admin_credentials";
-      $result = mysqli_query($con, $query);
-      $row = mysqli_fetch_array($result);
-      $p_name = $row['PHARMACY_NAME'];
-      $p_address = $row['ADDRESS'];
-      $p_email = $row['EMAIL'];
-      $p_contact_number = $row['CONTACT_NUMBER'];
-      */
-      ?>
-
       <div class="col-md-4">
         <span class="h4">Shop Details : </span><br><br>
-        <span class="font-weight-bold"><?php //echo $p_name; ?></span><br>
-        <span class="font-weight-bold"><?php //echo $p_address; ?></span><br>
-        <span class="font-weight-bold"><?php //echo $p_email; ?></span><br>
-        <span class="font-weight-bold">Mob. No.: <?php //echo $p_contact_number; ?></span>
+        <span class="font-weight-bold">Lansar pharmaceuticals Ltd.</span><br>
+        <span class="font-weight-bold">Kejetia - Kumasi</span><br>
+        <span class="font-weight-bold">Email: </span><br>
+        <span class="font-weight-bold">Mob. No.: </span>
       </div>
       <div class="col-md-1"></div>
     </div>
@@ -191,15 +179,15 @@
           <tfoot class="font-weight-bold">
             <tr style="text-align: right; font-size: 18px;">
               <td colspan="6">&nbsp;Total Amount</td>
-              <td><?php //echo $total_amount; ?></td>
+              <td><?php echo $total_amount; ?></td>
             </tr>
             <tr style="text-align: right; font-size: 18px;">
               <td colspan="6">&nbsp;Total Discount</td>
-              <td><?php //echo $total_discount; ?></td>
+              <td><?php echo $total_discount; ?></td>
             </tr>
             <tr style="text-align: right; font-size: 22px;">
               <td colspan="6" style="color: green;">&nbsp;Net Amount</td>
-              <td class="text-primary"><?php //echo $net_total; ?></td>
+              <td class="text-primary"><?php echo $net_total; ?></td>
             </tr>
           </tfoot>
         </table>
