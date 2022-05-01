@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 01, 2022 at 02:23 PM
+-- Generation Time: May 01, 2022 at 11:11 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.5
 
@@ -104,13 +104,6 @@ CREATE TABLE `invoices` (
   `TOTAL_DISCOUNT` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
 
---
--- Dumping data for table `invoices`
---
-
-INSERT INTO `invoices` (`INVOICE_ID`, `NET_TOTAL`, `INVOICE_DATE`, `CUSTOMER_ID`, `TOTAL_AMOUNT`, `TOTAL_DISCOUNT`) VALUES
-(8, 290, '2022-05-01', 6, 290, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -158,7 +151,7 @@ CREATE TABLE `medicines_stock` (
 --
 
 INSERT INTO `medicines_stock` (`ID`, `NAME`, `DIAGNOSE_NAME`, `BATCH_ID`, `EXPIRY_DATE`, `QUANTITY`, `MRP`, `RATE`) VALUES
-(1, 'Crosin', 'Headache', 'CROS12', '12/34', 9, 260, 26),
+(1, 'Crosin', 'Headache', 'CROS12', '12/34', 10, 260, 26),
 (2, 'Gelusil', 'Asthma', 'G327', '12/42', 8, 15, 12),
 (3, 'Dolo 650', 'HIV/AIDS', 'DOLO327', '01/23', 19, 30, 24),
 (4, 'Nicip Plus', 'Stomach Ache', 'NI325', '05/22', 10, 32, 28);
@@ -189,7 +182,7 @@ CREATE TABLE `sales` (
   `CUSTOMER_ID` int(20) NOT NULL,
   `INVOICE_NUMBER` int(25) NOT NULL,
   `MEDICINE_NAME` varchar(255) NOT NULL,
-  `BATCH_ID` varchar(100) NOT NULL,
+  `DIAGNOSE_NAME` varchar(100) NOT NULL,
   `EXPIRY_DATE` varchar(50) NOT NULL,
   `QUANTITY` int(10) NOT NULL,
   `MRP` int(10) NOT NULL,
@@ -201,9 +194,11 @@ CREATE TABLE `sales` (
 -- Dumping data for table `sales`
 --
 
-INSERT INTO `sales` (`ID`, `CUSTOMER_ID`, `INVOICE_NUMBER`, `MEDICINE_NAME`, `BATCH_ID`, `EXPIRY_DATE`, `QUANTITY`, `MRP`, `DISCOUNT`, `TOTAL`) VALUES
+INSERT INTO `sales` (`ID`, `CUSTOMER_ID`, `INVOICE_NUMBER`, `MEDICINE_NAME`, `DIAGNOSE_NAME`, `EXPIRY_DATE`, `QUANTITY`, `MRP`, `DISCOUNT`, `TOTAL`) VALUES
 (1, 6, 8, 'Dolo 650', 'DOLO327', '01/23', 1, 30, 0, 30),
-(2, 6, 8, 'Crosin', 'CROS12', '12/34', 1, 260, 0, 260);
+(2, 6, 8, 'Crosin', 'CROS12', '12/34', 1, 260, 0, 260),
+(3, 6, 9, 'Crosin', '', '12/34', 1, 260, 0, 260),
+(4, 4, 10, 'Crosin', 'Headache', '12/34', 1, 260, 0, 260);
 
 -- --------------------------------------------------------
 
@@ -326,7 +321,7 @@ ALTER TABLE `diagnosis`
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `INVOICE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `INVOICE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `medicines`
@@ -350,7 +345,7 @@ ALTER TABLE `purchases`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
