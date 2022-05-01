@@ -154,7 +154,7 @@
           </thead>
           <tbody>
             <?php
-            /*
+            
               $seq_no = 0;
               $total = 0;
               $query = "SELECT * FROM sales WHERE INVOICE_NUMBER = $invoice_number";
@@ -163,17 +163,17 @@
                 $seq_no++;
                 ?>
                 <tr>
-                  <td><?php //echo $seq_no; ?></td>
-                  <td><?php //echo $row['MEDICINE_NAME']; ?></td>
-                  <td><?php //echo $row['EXPIRY_DATE']; ?></td>
-                  <td><?php //echo $row['QUANTITY']; ?></td>
-                  <td><?php //echo $row['MRP']; ?></td>
-                  <td><?php //echo $row['DISCOUNT']."%"; ?></td>
-                  <td><?php //echo $row['TOTAL']; ?></td>
+                  <td><?php echo $seq_no; ?></td>
+                  <td><?php echo $row['MEDICINE_NAME']; ?></td>
+                  <td><?php echo $row['EXPIRY_DATE']; ?></td>
+                  <td><?php echo $row['QUANTITY']; ?></td>
+                  <td><?php echo $row['MRP']; ?></td>
+                  <td><?php echo $row['DISCOUNT']."%"; ?></td>
+                  <td><?php echo $row['TOTAL']; ?></td>
                 </tr>
                 <?php
               }
-              */
+              
             ?>
           </tbody>
           <tfoot class="font-weight-bold">
