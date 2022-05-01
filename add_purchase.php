@@ -78,18 +78,21 @@
                     <div class="form-group">
                       <label for="expiry-date"> Expiry Date (mm/yr)</label>
                       <input type="text" name="expiry-date" id="expiry-date" class="form-control" placeholder="02/22">
+                      <span class="text-danger expiry-date-error"></span>
                     </div>
                   </div>
                   <div class="col-md-4 col-12">
                     <div class="form-group">
                       <label for="quantity"> Quantity</label>
                       <input type="number" name="quantity" id="quantity" class="form-control">
+                      <span class="text-danger quantity-error"></span>
                     </div>
                   </div>
                   <div class="col-md-4 col-12">
                     <div class="form-group">
                       <label for="price"> Price</label>
                       <input type="number" name="price" id="price" class="form-control">
+                      <span class="text-danger price-error"></span>
                     </div>
                   </div>
                   <div class="col-md-4 col-12">
@@ -111,6 +114,7 @@
                         ?>
                         
                       </select>
+                      <span class="text-danger supplier-name-error"></span>
                     </div>
                   </div>
                   <div class="col-md-8 col-12">
@@ -182,6 +186,54 @@
         }else{
           errorMsg = '';
           $('.generic-name-error').html(errorMsg)
+        }
+
+        if($.trim($('#expiry-date').val()).length == 0 ){
+          var errorMsg = 'Check date format and add';
+          $('.expiry-date-error').html(errorMsg)
+        }else{
+          if($.trim($('#expiry-date').val()).length > 8 ){
+            var errorMsg = 'Check date format and add';
+            $('.expiry-date-error').html(errorMsg)
+          }else{
+            errorMsg = '';
+            $('.expiry-date-error').html(errorMsg)
+          }
+        }
+
+        if($.trim($('#quantity').val()).length == 0 ){
+          var errorMsg = 'Enter drugs quantity';
+          $('.quantity-error').html(errorMsg)
+        }else{
+          errorMsg = '';
+          $('.quantity-error').html(errorMsg)
+        }
+
+        if($.trim($('#price').val()).length == 0 ){
+          var errorMsg = 'Enter Drug Unit Price';
+          $('.price-error').html(errorMsg)
+        }else{
+          errorMsg = '';
+          $('.price-error').html(errorMsg)
+        }
+
+        if($.trim($('#supplier-name').val()) == 'select' ){
+          var errorMsg = 'Select Supplier Name';
+          $('.supplier-name-error').html(errorMsg)
+        }else{
+          errorMsg = '';
+          $('.supplier-name-error').html(errorMsg)
+        }
+
+        if($.trim($('#drug-name').val()).length == 0 || $.trim($('#diagnose-name').val()) == 'select' || $.trim($('#generic-name').val()).length == 0 || $.trim($('#expiry-date').val()).length == 0 || $.trim($('#quantity').val()).length == 0 || $.trim($('#price').val()).length == 0 || $.trim($('#supplier-name').val()) == 'select' ){
+          var errMsg = 'Check all fields and fill correctly';
+          $('.error-text').css('display', 'block'),
+          $('.error-text').html(errMsg).fadeOut(8000);
+
+        }else{
+          alert('Added successfully')
+          $('#add-drugs')[0].reset()
+          $('.supplier-details').css('display', 'none');
         }
       })
     })
