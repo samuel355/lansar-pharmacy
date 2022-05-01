@@ -144,10 +144,11 @@
           <thead>
             <tr>
               <th>SL</th>
-              <th>Medicine Name</th>
+              <th>Medicine</th>
+              <th>Diagnose</th>
               <th>Expiry Date</th>
               <th>Quantity</th>
-              <th>MRP</th>
+              <th>Price</th>
               <th>Discount</th>
               <th>Total</th>
             </tr>
@@ -165,6 +166,7 @@
                 <tr>
                   <td><?php echo $seq_no; ?></td>
                   <td><?php echo $row['MEDICINE_NAME']; ?></td>
+                  <td><?php echo $row['DIAGNOSE_NAME']; ?></td>
                   <td><?php echo $row['EXPIRY_DATE']; ?></td>
                   <td><?php echo $row['QUANTITY']; ?></td>
                   <td><?php echo $row['MRP']; ?></td>

@@ -101,12 +101,12 @@
           <div class="row col col-md-12">
             <div class="row col col-md-12 font-weight-bold">
               <div class="col col-md-2">Medicine Name</div>
-              <div class="col col-md-2">Batch ID</div>
+              <div class="col col-md-2">Diagnose</div>
               <div class="col col-md-1">Ava.Qty.</div>
               <div class="col col-md-1">Expiry</div>
               <div class="col col-md-1">Quantity</div>
               <div class="col col-md-1">Price</div>
-              <div class="col col-md-1">Discount</div>
+              <div class="col col-md-1">Discount (%)</div>
               <div class="col col-md-1">Total</div>
               <div class="col col-md-2">Action</div>
             </div>
