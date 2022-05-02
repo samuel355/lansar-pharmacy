@@ -231,9 +231,25 @@
           $('.error-text').html(errMsg).fadeOut(8000);
 
         }else{
-          alert('Added successfully')
-          $('#add-drugs')[0].reset()
-          $('.supplier-details').css('display', 'none');
+          $.ajax({
+            url: 'php/add-new-drug.php',
+            method: 'POST',
+            data: $('#add-drugs').serialize(),
+            success: function(data){
+              if(data === 'success'){
+                alert('Added successfully')
+                $('#add-drugs')[0].reset()
+                $('.supplier-details').css('display', 'none');
+              }else{
+                $('.error-text').css('display', 'block'),
+                $('.error-text').html(data).fadeOut(8000);
+              }
+            },
+            error: function(err){
+              console.log(err)
+            }
+          })
+          
         }
       })
     })
