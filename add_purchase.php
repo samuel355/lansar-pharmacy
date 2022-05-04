@@ -138,6 +138,7 @@
       </div>
     </div>
   </body>
+  
   <script>
     $(document).ready(function(){
       $('#supplier-name').on('change', function(){
