@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 01, 2022 at 11:11 PM
+-- Generation Time: May 05, 2022 at 01:01 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.5
 
@@ -139,22 +139,26 @@ CREATE TABLE `medicines_stock` (
   `ID` int(11) NOT NULL,
   `NAME` varchar(100) COLLATE utf16_bin NOT NULL,
   `DIAGNOSE_NAME` varchar(255) COLLATE utf16_bin NOT NULL,
+  `GENERIC_NAME` varchar(255) COLLATE utf16_bin DEFAULT NULL,
   `BATCH_ID` varchar(20) COLLATE utf16_bin NOT NULL,
   `EXPIRY_DATE` varchar(10) COLLATE utf16_bin NOT NULL,
   `QUANTITY` int(11) NOT NULL,
   `MRP` double NOT NULL,
-  `RATE` double NOT NULL
+  `RATE` double NOT NULL,
+  `SUPPLIER_NAME` varchar(255) COLLATE utf16_bin DEFAULT NULL,
+  `SUPPLIER_EMAIL` varchar(255) COLLATE utf16_bin DEFAULT NULL,
+  `SUPPLIER_CONTACT` varchar(255) COLLATE utf16_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
 
 --
 -- Dumping data for table `medicines_stock`
 --
 
-INSERT INTO `medicines_stock` (`ID`, `NAME`, `DIAGNOSE_NAME`, `BATCH_ID`, `EXPIRY_DATE`, `QUANTITY`, `MRP`, `RATE`) VALUES
-(1, 'Crosin', 'Headache', 'CROS12', '12/34', 10, 260, 26),
-(2, 'Gelusil', 'Asthma', 'G327', '12/42', 8, 15, 12),
-(3, 'Dolo 650', 'HIV/AIDS', 'DOLO327', '01/23', 19, 30, 24),
-(4, 'Nicip Plus', 'Stomach Ache', 'NI325', '05/22', 10, 32, 28);
+INSERT INTO `medicines_stock` (`ID`, `NAME`, `DIAGNOSE_NAME`, `GENERIC_NAME`, `BATCH_ID`, `EXPIRY_DATE`, `QUANTITY`, `MRP`, `RATE`, `SUPPLIER_NAME`, `SUPPLIER_EMAIL`, `SUPPLIER_CONTACT`) VALUES
+(1, 'Crosin', 'Headache', NULL, 'CROS12', '12/34', 10, 260, 26, '', '', ''),
+(2, 'Gelusil', 'Asthma', NULL, 'G327', '12/42', 8, 15, 12, '', '', ''),
+(3, 'Dolo 650', 'HIV/AIDS', NULL, 'DOLO327', '01/23', 19, 30, 24, '', '', ''),
+(4, 'Nicip Plus', 'Stomach Ache', NULL, 'NI325', '05/22', 10, 32, 28, '', '', '');
 
 -- --------------------------------------------------------
 
