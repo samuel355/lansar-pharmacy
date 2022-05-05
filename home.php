@@ -69,8 +69,6 @@
               createSection1('manage_customer.php', 'Total Customer', 'customers');
               createSection1('manage_supplier.php', 'Total Supplier', 'suppliers');
               createSection1('manage_medicine.php', 'Total Medicine', 'medicines');
-              createSection1('manage_medicine_stock.php?out_of_stock', 'Out of Stock', 'medicines_stock');
-              createSection1('manage_medicine_stock.php?expired', 'Expired', 'medicines_stock');
               createSection1('manage_invoice.php', 'Total Invoice', 'invoices');
             ?>
 
@@ -132,9 +130,6 @@
             createSection2('handshake', 'add_customer.php', 'Add New Customer');
             createSection2('shopping-bag', 'add_medicine.php', 'Add New Medicine');
             createSection2('group', 'add_supplier.php', 'Add New Supplier');
-            createSection2('bar-chart', 'add_purchase.php', 'Add New Purchase');
-            createSection2('book', 'sales_report.php', 'Sales Report');
-            createSection2('book', 'purchase_report.php', 'Purchase Report');
           ?>
 
         </div>
