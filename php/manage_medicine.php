@@ -58,10 +58,10 @@
         <td><?php echo $row['MRP']; ?></td>
         <td><?php echo $row['SUPPLIER_NAME']; ?></td>
         <td>
-          <button href="" class="btn btn-info btn-sm" onclick="editMedicine(<?php echo $row['ID']; ?>);">
+          <button href="" class="btn btn-info btn-sm m-1" onclick="editMedicine(<?php echo $row['ID']; ?>);">
             <i class="fa fa-pencil"></i>
           </button>
-          <button class="btn btn-danger btn-sm" onclick="deleteMedicine(<?php echo $row['ID']; ?>);">
+          <button class="btn btn-danger btn-sm m-1" onclick="deleteMedicine(<?php echo $row['ID']; ?>);">
             <i class="fa fa-trash"></i>
           </button>
         </td>
