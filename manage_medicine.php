@@ -48,12 +48,14 @@
             	<table class="table table-bordered table-striped table-hover">
             		<thead>
             			<tr>
-            				<th style="width: 5%;">SL.</th>
-            				<th style="width: 20%;">Medicine Name</th>
-                    <th style="width: 10%;">Packing</th>
-                    <th style="width: 30%;">Generic Name</th>
-            				<th style="width: 20%;">Supplier</th>
-                    <th style="width: 15%;">Action</th>
+            				<th style="width: 5%;">SL. </th>
+            				<th style="width: 20%;">Medicine Name </th>
+                    <th style="width: 10%;">Generic Name </th>
+                    <th style="width: 10%;">Diagnose </th>
+                    <th style="width: 10%;">Price (GHS) </th>
+                    <th style="width: 30%;">Quantity </th>
+            				<th style="width: 20%;">Supplier </th>
+                    <th style="width: 15%;">Action </th>
             			</tr>
             		</thead>
             		<tbody id="medicines_div">

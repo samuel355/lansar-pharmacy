@@ -4,7 +4,7 @@
   if($con) {
     if(isset($_GET["action"]) && $_GET["action"] == "delete") {
       $id = $_GET["id"];
-      $query = "DELETE FROM medicines WHERE ID = $id";
+      $query = "DELETE FROM medicines_stock WHERE ID = $id";
       $result = mysqli_query($con, $query);
       if(!empty($result))
     		showMedicines(0);
@@ -35,7 +35,7 @@
     require "db_connection.php";
     if($con) {
       $seq_no = 0;
-      $query = "SELECT * FROM medicines";
+      $query = "SELECT * FROM medicines_stock";
       $result = mysqli_query($con, $query);
       while($row = mysqli_fetch_array($result)) {
         $seq_no++;
@@ -49,59 +49,61 @@
 
   function showMedicineRow($seq_no, $row) {
     ?>
-    <tr>
-      <td><?php echo $seq_no; ?></td>
-      <td><?php echo $row['NAME']; ?></td>
-      <td><?php echo $row['PACKING']; ?></td>
-      <td><?php echo $row['GENERIC_NAME']; ?></td>
-      <td><?php echo $row['SUPPLIER_NAME']; ?></td>
-      <td>
-        <button href="" class="btn btn-info btn-sm" onclick="editMedicine(<?php echo $row['ID']; ?>);">
-          <i class="fa fa-pencil"></i>
-        </button>
-        <button class="btn btn-danger btn-sm" onclick="deleteMedicine(<?php echo $row['ID']; ?>);">
-          <i class="fa fa-trash"></i>
-        </button>
-      </td>
-    </tr>
+      <tr>
+        <td><?php echo $seq_no; ?></td>
+        <td><?php echo $row['NAME']; ?></td>
+        <td><?php echo $row['GENERIC_NAME']; ?></td>
+        <td><?php echo $row['DIAGNOSE_NAME']; ?></td>
+        <td><?php echo $row['QUANTITY']; ?></td>
+        <td><?php echo $row['MRP']; ?></td>
+        <td><?php echo $row['SUPPLIER_NAME']; ?></td>
+        <td>
+          <button href="" class="btn btn-info btn-sm" onclick="editMedicine(<?php echo $row['ID']; ?>);">
+            <i class="fa fa-pencil"></i>
+          </button>
+          <button class="btn btn-danger btn-sm" onclick="deleteMedicine(<?php echo $row['ID']; ?>);">
+            <i class="fa fa-trash"></i>
+          </button>
+        </td>
+      </tr>
     <?php
   }
 
 function showEditOptionsRow($seq_no, $row) {
   ?>
-  <tr>
-    <td><?php echo $seq_no; ?></td>
-    <td>
-      <input type="text" class="form-control" value="<?php echo $row['NAME']; ?>" placeholder="Medicine Name" id="medicine_name" onblur="notNull(this.value, 'medicine_name_error');">
-      <code class="text-danger small font-weight-bold float-right" id="medicine_name_error" style="display: none;"></code>
-    </td>
-    <td>
-      <input type="text" class="form-control" value="<?php echo $row['PACKING']; ?>" placeholder="Packing" id="packing" onblur="notNull(this.value, 'pack_error');">
-      <code class="text-danger small font-weight-bold float-right" id="pack_error" style="display: none;"></code>
-    </td>
-    <td>
-      <input type="text" class="form-control" value="<?php echo $row['GENERIC_NAME']; ?>" placeholder="Generic Name" id="generic_name" onblur="notNull(this.value, 'generic_name_error');">
-      <code class="text-danger small font-weight-bold float-right" id="generic_name_error" style="display: none;"></code>
-    </td>
-    <td>
-      <input type="text" class="form-control" value="<?php echo $row['SUPPLIER_NAME']; ?>" placeholder="Supplier Name" id="suppliers_name" onblur="notNull(this.value, 'supplier_name_error');">
-      <code class="text-danger small font-weight-bold float-right" id="supplier_name_error" style="display: none;"></code>
-    </td>
-    <td>
-      <button href="" class="btn btn-success btn-sm" onclick="updateMedicine(<?php echo $row['ID']; ?>);">
-        <i class="fa fa-edit"></i>
-      </button>
-      <button class="btn btn-danger btn-sm" onclick="cancel();">
-        <i class="fa fa-close"></i>
-      </button>
-    </td>
-  </tr>
+    <tr>
+      <td><?php echo $seq_no; ?></td>
+      <td>
+        <input type="text" class="form-control" value="<?php echo $row['NAME']; ?>" placeholder="Medicine Name" id="medicine_name" onblur="notNull(this.value, 'medicine_name_error');">
+        <code class="text-danger small font-weight-bold float-right" id="medicine_name_error" style="display: none;"></code>
+      </td>
+      <td>
+        <input type="text" class="form-control" value="<?php echo $row['PACKING']; ?>" placeholder="Packing" id="packing" onblur="notNull(this.value, 'pack_error');">
+        <code class="text-danger small font-weight-bold float-right" id="pack_error" style="display: none;"></code>
+      </td>
+      <td>
+        <input type="text" class="form-control" value="<?php echo $row['GENERIC_NAME']; ?>" placeholder="Generic Name" id="generic_name" onblur="notNull(this.value, 'generic_name_error');">
+        <code class="text-danger small font-weight-bold float-right" id="generic_name_error" style="display: none;"></code>
+      </td>
+      <td>
+        <input type="text" class="form-control" value="<?php echo $row['SUPPLIER_NAME']; ?>" placeholder="Supplier Name" id="suppliers_name" onblur="notNull(this.value, 'supplier_name_error');">
+        <code class="text-danger small font-weight-bold float-right" id="supplier_name_error" style="display: none;"></code>
+      </td>
+      <td>
+        <button href="" class="btn btn-success btn-sm" onclick="updateMedicine(<?php echo $row['ID']; ?>);">
+          <i class="fa fa-edit"></i>
+        </button>
+        <button class="btn btn-danger btn-sm" onclick="cancel();">
+          <i class="fa fa-close"></i>
+        </button>
+      </td>
+    </tr>
   <?php
 }
 
 function updateMedicine($id, $name, $packing, $generic_name, $suppliers_name) {
   require "db_connection.php";
-  $query = "UPDATE medicines SET NAME = '$name', PACKING = '$packing', GENERIC_NAME = '$generic_name', SUPPLIER_NAME = '$suppliers_name' WHERE ID = $id";
+  $query = "UPDATE medicines_stock SET NAME = '$name', PACKING = '$packing', GENERIC_NAME = '$generic_name', SUPPLIER_NAME = '$suppliers_name' WHERE ID = $id";
   $result = mysqli_query($con, $query);
   if(!empty($result))
     showMedicines(0);
@@ -117,7 +119,7 @@ function searchMedicine($text, $tag) {
     $column = "SUPPLIER_NAME";
   if($con) {
     $seq_no = 0;
-    $query = "SELECT * FROM medicines WHERE UPPER($column) LIKE '%$text%'";
+    $query = "SELECT * FROM medicines_stock WHERE UPPER($column) LIKE '%$text%'";
     $result = mysqli_query($con, $query);
     while($row = mysqli_fetch_array($result)) {
       $seq_no++;
