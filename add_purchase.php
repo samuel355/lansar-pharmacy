@@ -138,7 +138,7 @@
       </div>
     </div>
   </body>
-  
+
   <script>
     $(document).ready(function(){
       $('#supplier-name').on('change', function(){
@@ -241,6 +241,7 @@
                 alert('Added successfully')
                 $('#add-drugs')[0].reset()
                 $('.supplier-details').css('display', 'none');
+                window.location.reload(true)
               }else{
                 $('.error-text').css('display', 'block'),
                 $('.error-text').html(data).fadeOut(8000);

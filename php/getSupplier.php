@@ -18,6 +18,10 @@
                     <label for="supplier-contact"> Supplier Contact</label>
                     <input readonly type="number" value ="'.$contact.'" name="supplier-contact" id="supplier-contact" class="form-control">
                 </div>
+                <div style="display: none">
+                    <label for="supplier-contact"> Supplier Full Name</label>
+                    <input readonly type="text" value ="'.$name.'" name="supplier-full-name" id="supplier-full-name" class="form-control">
+                </div>
             ';
         }
 
