@@ -118,7 +118,101 @@
           
         });
 
-        
+        $('#confirm-medicine-update').on('click', function(e){
+          e.preventDefault();
+
+          if($.trim($('#medicine-name').val()).length == 0){
+            var erMsg = 'Add Medicine Name';
+            $('.medicine-name-error').text(erMsg);
+            console.log(erMsg)
+          }else{
+            erMsg = '';
+            $('.medicine-name-error').text(erMsg);
+          }
+
+          if($.trim($('#generic-name').val()).length == 0){
+            var erMsg = 'Add Generic Name';
+            $('.generic-name-error').text(erMsg);
+            console.log(erMsg)
+          }else{
+            erMsg = '';
+            $('.generic-name-error').text(erMsg);
+          }
+
+          if($.trim($('#expiry-date').val()).length == 0){
+            var erMsg = 'Add Expiry Date';
+            $('.expiry-date-error').text(erMsg);
+            console.log(erMsg)
+          }else{
+            erMsg = '';
+            $('.expiry-date-error').text(erMsg);
+          }
+
+          if($.trim($('#quantity').val()).length == 0){
+            var erMsg = 'Quantity';
+            $('.quantity-error').text(erMsg);
+            console.log(erMsg)
+          }else{
+            erMsg = '';
+            $('.quantity-error').text(erMsg);
+          }
+
+          if($.trim($('#price').val()).length == 0){
+            var erMsg = 'Add Price';
+            $('.price-error').text(erMsg);
+            console.log(erMsg)
+          }else{
+            erMsg = '';
+            $('.price-error').text(erMsg);
+          }
+
+          if($.trim($('#sup-email').val()).length == 0){
+            var erMsg = 'Add Email';
+            $('.sup-email-error').text(erMsg);
+            console.log(erMsg)
+          }else{
+            erMsg = '';
+            $('.sup-email-error').text(erMsg);
+          }
+
+          if($.trim($('#sup-contact').val()).length == 0){
+            var erMsg = 'Add Contact';
+            $('.sup-contact-error').text(erMsg);
+            console.log(erMsg)
+          }else{
+            erMsg = '';
+            $('.sup-contact-error').text(erMsg);
+          }
+
+          if($.trim($('#sup-address').val()).length == 0){
+            var erMsg = 'Add Address';
+            $('.sup-address-error').text(erMsg);
+            console.log(erMsg)
+          }else{
+            erMsg = '';
+            $('.sup-address-error').text(erMsg);
+          }
+
+          if($.trim($('#medicine-name').val()).length != 0 || $.trim($('#generic-name').val()).length != 0 || $.trim($('#expiry-date').val()).length != 0 || $.trim($('#quantity').val()).length != 0 || $.trim($('#price').val()).length != 0 || $.trim($('#sup-email').val()).length != 0 || $.trim($('#sup-contact').val()).length != 0  || $.trim($('#sup-address').val()).length != 0){
+
+            $.ajax({
+              url: 'php/update_med.php',
+              method: 'POST',
+              data: data = $('#update-medicine-form').serialize(),
+
+              success: function(data){
+                if(data === 'success'){
+                  alert('Updated Successfully');
+                }else{
+                  alert('Sorry Something went wrong updating');
+                }
+              },
+              error: function(err){
+                console.log(err);
+              }
+            })
+          }
+        })
       })
     </script>
   </body>

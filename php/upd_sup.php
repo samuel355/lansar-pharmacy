@@ -12,23 +12,26 @@
             $sup_address = $row['ADDRESS'];
         }
         echo '
-            <div class="row ml-3">
+            <div class="row ml-2">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="sup-email"> Supplier Email</label>
                         <input type="email" name="sup-email" id="sup-email" class="form-control" value="'.$sup_email.'">
+                        <span class="text-danger sup-email-error"></span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="sup-contact"> Supplier Contact</label>
                         <input type="number" name="sup-contact" id="sup-contact" class="form-control" value="'.$sup_contact.'">
+                        <span class="text-danger sup-contact-error"></span>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="sup-address"> Supplier Address</label>
                         <input type="text" name="sup-address" id="sup-address" class="form-control" value="'.$sup_address.'">
+                        <span class="text-danger sup-address-error"></span>
                     </div>
                 </div>
             </div>
