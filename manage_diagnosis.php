@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/sidenav.css">
     <link rel="stylesheet" href="css/home.css">
-    <script src="js/manage_medicine.js"></script>
+    <script src="js/manage_diagnosis.js"></script>
     <script src="js/validateForm.js"></script>
     <script src="js/restrict.js"></script>
   </head>
@@ -25,7 +25,7 @@
         <!-- header section -->
         <?php
           require "php/header.php";
-          createHeader('shopping-bag', 'Manage Medicines', 'Manage Existing Medicine');
+          createHeader('shopping-bag', 'Manage Diagnosis', 'Manage Existing Diagnosis');
         ?>
         <!-- header section end -->
 
@@ -35,8 +35,6 @@
           <div class="col-md-12 form-group form-inline">
             <label class="font-weight-bold" for="">Search :&emsp;</label>
             <input type="text" class="form-control" id="by_name" placeholder="By Medicine Name" onkeyup="searchMedicine(this.value, 'name');">
-            &emsp;<input type="text" class="form-control" id="by_generic_name" placeholder="By Generic Name" onkeyup="searchMedicine(this.value, 'generic_name');">
-            &emsp;<input type="text" class="form-control" id="by_suppliers_name" placeholder="By Supplier Name" onkeyup="searchMedicine(this.value, 'suppliers_name');">
           </div>
 
           <div class="col col-md-12">
@@ -49,18 +47,13 @@
             		<thead>
             			<tr>
             				<th style="width: 5%;">SL. </th>
-            				<th style="width: 20%;">Medicine Name </th>
-                    <th style="width: 10%;">Generic Name </th>
-                    <th style="width: 10%;">Diagnose </th>
-                    <th style="width: 10%;">Price (GHS) </th>
-                    <th style="width: 30%;">Quantity </th>
-            				<th style="width: 20%;">Supplier </th>
+            				<th style="width: 20%;">Diagnosis Name </th>
                     <th style="width: 15%;">Action </th>
             			</tr>
             		</thead>
             		<tbody id="medicines_div">
                   <?php
-                    require 'php/manage_medicine.php';
+                    require 'php/manage_diagnosis.php';
                     showMedicines(0);
                   ?>
             		</tbody>
