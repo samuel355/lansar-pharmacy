@@ -32,6 +32,7 @@
                         <span class="text-danger medicine-name-error mt-3"></span>
                         </div>
                     </div>
+                    <input type = "hidden" name = "med_id" value="'.$med_id.'">
                     <div class="col-md-6">
                         <div class="form-group">
                         <label for="diagnose-name">Diagnose Name</label>
