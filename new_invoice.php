@@ -22,7 +22,7 @@
       <div class="modal-dialog">
       	<div class="modal-content">
       		<div class="modal-header" style="background-color: #ff5252; color: white">
-            <div class="font-weight-bold">Add New Customer</div>
+            <div class="font-weight-bold">Add New Patient</div>
       			<button class="close" style="outline: none;" onclick="document.getElementById('add_new_customer_model').style.display = 'none';"><i class="fa fa-close"></i></button>
       		</div>
       		<div class="modal-body">
@@ -51,8 +51,8 @@
           <!-- customer details content -->
           <div class="row col col-md-12">
               <div class="col col-md-3 form-group">
-                <label class="font-weight-bold" for="customers_name">Customer Name :</label>
-                <input id="customers_name" type="text" class="form-control" placeholder="Customer Name" name="customers_name" onkeyup="showSuggestions(this.value, 'customer');">
+                <label class="font-weight-bold" for="customers_name">Patient Name :</label>
+                <input id="customers_name" type="text" class="form-control" placeholder="Search Name" name="customers_name" onkeyup="showSuggestions(this.value, 'customer');">
                 <code class="text-danger small font-weight-bold float-right" id="customer_name_error" style="display: none;"></code>
                 <div id="customer_suggestions" class="list-group position-fixed" style="z-index: 1; width: 18.30%; overflow: auto; max-height: 200px;"></div>
               </div>
@@ -83,7 +83,7 @@
           <!-- new user button -->
           <div class="row col col-md-12">
             <div class="col col-md-2 form-group">
-              <button class="btn btn-primary form-control" onclick="document.getElementById('add_new_customer_model').style.display = 'block';">New Customer</button>
+              <button class="btn btn-primary form-control" onclick="document.getElementById('add_new_customer_model').style.display = 'block';">New Patient</button>
             </div>
             <div class="col col-md-1 form-group"></div>
             <div class="col col-md-2 form-group">
