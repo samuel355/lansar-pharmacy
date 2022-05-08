@@ -16,6 +16,8 @@
     <script src="js/restrict.js"></script>
   </head>
   <body>
+
+
     <!-- including side navigations -->
     <?php include("sections/sidenav.html"); ?>
 
@@ -34,7 +36,7 @@
 
           <div class="col-md-12 form-group form-inline">
             <label class="font-weight-bold" for="">Search :&emsp;</label>
-            <input type="text" class="form-control" id="by_name" placeholder="By Medicine Name" onkeyup="searchMedicine(this.value, 'name');">
+            <input type="text" class="form-control" id="by_name" placeholder="By Medicine Name" onkeyup="searchDiagnosis(this.value, 'name');">
           </div>
 
           <div class="col col-md-12">
@@ -47,14 +49,14 @@
             		<thead>
             			<tr>
             				<th style="width: 5%;">SL. </th>
-            				<th style="width: 20%;">Diagnosis Name </th>
+            				<th id="diagnose_name" style="width: 20%;">Diagnosis Name </th>
                     <th style="width: 15%;">Action </th>
             			</tr>
             		</thead>
             		<tbody id="medicines_div">
                   <?php
                     require 'php/manage_diagnosis.php';
-                    showMedicines(0);
+                    showDiagnosis(0);
                   ?>
             		</tbody>
             	</table>
@@ -66,5 +68,91 @@
         <hr style="border-top: 2px solid #ff5252;">
       </div>
     </div>
+
+
+  <div class="modal fade" id="edit-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit</h5>
+          <a href="javascript:void(0);"  data-dismiss="modal" class="btn btn-primary cancel-btn"><i class="fa fa-close text-danger"></i></a>
+        </div>
+        <form id="diagnose-name-form">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="diagnose-name">Diagnose Name</label>
+              <input type="text" id="diagnose-name" name="diagnose-name" class="form-control">
+              <input type="hidden" id="diagnose-id" name="diagnose-id" class="form-control">
+              <span class="text-danger diagnose-name-error"></span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-6">
+                <a id="confirm-update" href="javascript:void(0);"class="btn btn-success continue-btn">Update</a>
+              </div>
+              <div class="col-6">
+                <a href="javascript:void(0);"  data-dismiss="modal" class="btn btn-danger cancel-btn">Cancel</a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+    <script>
+      $(document).ready(function(){
+
+        //Pop Up Selected Diagnose Title
+        $('.edit-btn').on('click', function(){
+          var id = $(this).attr('data-id');
+
+          $.ajax({
+            url: "php/get_diagnose_name.php",
+            method: "GET",
+            data: {diagnose_id: id},
+
+            success: function(data){
+              $('#edit-modal').modal('show');
+              $('#diagnose-name').val(data);
+              $('#diagnose-id').val(id);
+            }
+          })
+          
+        })
+
+        //Update
+        $('#confirm-update').on('click', function(e){
+          e.preventDefault();
+
+          if($.trim($('#diagnose-name').val()).length == 0){
+            errMsg = 'Diagnose name cannot be empty';
+            $('.diagnose-name-error').text(errMsg);
+          }else{
+            errMsg = ' ';
+            $('.diagnose-name-error').text(errMsg);
+
+            $.ajax({
+              url: 'php/update_diagnose_name.php',
+              method: 'POST',
+              data: $('#diagnose-name-form').serialize(),
+
+              success: function(data){
+                if(data === 'success'){
+                  alert('Updated Successfully');
+                  
+                }else{
+                  $('.diagnose-name-error').text(data);
+                }
+              },
+              error: function(err){
+                console.log(err)
+              }
+            })
+          }
+        })
+      })
+    </script>
   </body>
 </html>
