@@ -10,7 +10,7 @@
             $email = $row['EMAIL'];
             $contact = $row['CONTACT_NUMBER'];
             $output .='
-                <option data-id = "'.$id.'" value="'.$name.'"> '.$name.' </option>
+                <option value="'.$name.'"> '.$name.' </option>
             ';
         }
 

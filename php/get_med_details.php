@@ -42,6 +42,7 @@
                         <span class="text-danger diagnose-name-error"></span>
                         </div>
                     </div>
+                    
                     <div class="col-md-7">
                         <div class="form-group">
                         <label for="generic-name"> Generic Name</label>
@@ -59,6 +60,9 @@
                         </select>
                         <span class="text-danger supplier-name-error"></span>
                         </div>
+                    </div>
+                    <div class="sup-details">
+                        
                     </div>
                     <div class="col-md-5">
                         <div class="form-group">
@@ -117,6 +121,19 @@
                 }
             })
         }
+
+        $('#suppliers-name').on('change', function(){
+            var name = $(this).val();
+            $.ajax({
+                data: {supp_name: name},
+                url: 'php/upd_sup.php',
+                method: 'GET',
+
+                success: function(data){
+                    $('.sup-details').html(data)
+                }
+            })
+        })
     })
 
 </script>
