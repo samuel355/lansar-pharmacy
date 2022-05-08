@@ -141,7 +141,7 @@
               success: function(data){
                 if(data === 'success'){
                   alert('Updated Successfully');
-                  
+                  window.location.reload(true);
                 }else{
                   $('.diagnose-name-error').text(data);
                 }

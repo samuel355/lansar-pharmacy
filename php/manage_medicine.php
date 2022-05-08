@@ -58,7 +58,7 @@
         <td><?php echo $row['MRP']; ?></td>
         <td><?php echo $row['SUPPLIER_NAME']; ?></td>
         <td>
-          <button href="" class="btn btn-info btn-sm m-1">
+          <button href="" class="btn btn-info btn-sm m-1 edit-button" data-id = "<?php echo $row['ID']; ?>">
             <i class="fa fa-pencil"></i>
           </button>
           <button class="btn btn-danger btn-sm m-1" onclick="deleteMedicine(<?php echo $row['ID']; ?>);">
