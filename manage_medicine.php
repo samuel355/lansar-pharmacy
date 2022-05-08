@@ -82,95 +82,9 @@
             <a href="javascript:void(0);"  data-dismiss="modal" class="btn btn-primary cancel-btn"><i class="fa fa-close text-danger"></i></a>
           </div>
           <form id="update-medicine-form">
-              <div class="modal-body">
-                <div class="row">
-                  <div style="display: none;" class="col-12 text-center alert alert-danger error-text"></div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="drug-name"> Drug Name</label>
-                      <input type="text" name="drug-name" id="drug-name" class="form-control">
-                      <span class="text-danger drug-name-error mt-3"></span>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="diagnose-name">Diagnose Name</label>
-                      <select name="diagnose-name" id="diagnose-name" class="form-group custom-select">
-                        <option value="select">Select Diagnose Name</option>
-                        <?php
-                          include_once "php/db_connection.php";
-                          $query = "SELECT * FROM diagnosis";
-                          $qry_all = mysqli_query($con, $query);
-                          while ($row = mysqli_fetch_array($qry_all)){
-                            $diagnose_id = $row['ID'];
-                            $diagnose_name = $row['DIAGNOSE_NAME'];
-                            echo '
-                              <option value="'.$diagnose_name.'">'.$diagnose_name.'</option>
-                            ';
-                          }
-                        ?>
-                        
-                      </select>
-                      <span class="text-danger diagnose-name-error"></span>
-                    </div>
-                  </div>
-                  <div class="col-md-7">
-                    <div class="form-group">
-                      <label for="generic-name"> Generic Name</label>
-                      <input type="text" name="generic-name" id="generic-name" class="form-control">
-                      <span class="text-danger generic-name-error"></span>
-                    </div>
-                  </div>
-                  <div class="col-md-5">
-                    <div class="form-group">
-                      <label for="diagnose-name">Supplier Name</label>
-                      <select name="supplier-name" id="supplier-name" class="form-group custom-select">
-                        <option value="select">Select Supplier Name</option>
-                        <?php
-                          include_once "php/db_connection.php";
-                          $query = "SELECT * FROM suppliers";
-                          $qry_all = mysqli_query($con, $query);
-                          while ($row = mysqli_fetch_array($qry_all)){
-                            $supplier_id = $row['ID'];
-                            $supplier_name = $row['NAME'];
-                            echo '
-                              <option value="'.$supplier_id.'">'.$supplier_name.'</option>
-                            ';
-                          }
-                        ?>
-                        
-                      </select>
-                      <span class="text-danger supplier-name-error"></span>
-                    </div>
-                  </div>
-                  <div class="col-md-5">
-                    <div class="form-group">
-                      <label for="expiry-date"> Expiry Date (mm/yr)</label>
-                      <input type="text" name="expiry-date" id="expiry-date" class="form-control" placeholder="02/22">
-                      <span class="text-danger expiry-date-error"></span>
-                    </div>
-                  </div>
-                  <div class="col-md-3">
-                    <div class="form-group">
-                      <label for="quantity"> Quantity</label>
-                      <input type="number" name="quantity" id="quantity" class="form-control">
-                      <span class="text-danger quantity-error"></span>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label for="price">Unit Price</label>
-                      <input type="number" name="price" id="price" class="form-control">
-                      <span class="text-danger price-error"></span>
-                    </div>
-                  </div>
-                  
-                </div>
+            <div class="med-details-container">
+
             </div>
-
-
             <div class="modal-footer">
               <div class="row">
                 <div class="col-6">
@@ -190,7 +104,18 @@
       $(document).ready(function(){
         $('.edit-button').on('click', function(){
           id = $(this).attr('data-id');
-          $('#edit-medicine-modal').modal('show');
+          console.log(id);
+
+          $.ajax({
+            url: 'php/get_med_details.php',
+            method: 'GET',
+            data: {med_id: id},
+            success: function(data){
+              $('#edit-medicine-modal').modal('show');
+              $('.med-details-container').html(data);
+            }
+          })
+          
         })
       })
     </script>
