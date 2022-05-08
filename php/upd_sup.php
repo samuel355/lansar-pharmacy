@@ -27,13 +27,6 @@
                         <span class="text-danger sup-contact-error"></span>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label for="sup-address"> Supplier Address</label>
-                        <input type="text" name="sup-address" id="sup-address" class="form-control" value="'.$sup_address.'">
-                        <span class="text-danger sup-address-error"></span>
-                    </div>
-                </div>
             </div>
         ';
     }

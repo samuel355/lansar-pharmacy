@@ -184,16 +184,7 @@
             $('.sup-contact-error').text(erMsg);
           }
 
-          if($.trim($('#sup-address').val()).length == 0){
-            var erMsg = 'Add Address';
-            $('.sup-address-error').text(erMsg);
-            console.log(erMsg)
-          }else{
-            erMsg = '';
-            $('.sup-address-error').text(erMsg);
-          }
-
-          if($.trim($('#medicine-name').val()).length != 0 || $.trim($('#generic-name').val()).length != 0 || $.trim($('#expiry-date').val()).length != 0 || $.trim($('#quantity').val()).length != 0 || $.trim($('#price').val()).length != 0 || $.trim($('#sup-email').val()).length != 0 || $.trim($('#sup-contact').val()).length != 0  || $.trim($('#sup-address').val()).length != 0){
+          if($.trim($('#medicine-name').val()).length != 0 || $.trim($('#generic-name').val()).length != 0 || $.trim($('#expiry-date').val()).length != 0 || $.trim($('#quantity').val()).length != 0 || $.trim($('#price').val()).length != 0 || $.trim($('#sup-email').val()).length != 0 || $.trim($('#sup-contact').val()).length != 0){
 
             $.ajax({
               url: 'php/update_med.php',
@@ -203,6 +194,7 @@
               success: function(data){
                 if(data === 'success'){
                   alert('Updated Successfully');
+                  window.location.reload(true);
                 }else{
                   alert('Sorry Something went wrong updating');
                 }

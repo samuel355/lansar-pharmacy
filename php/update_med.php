@@ -12,15 +12,29 @@
 
         $sup_email = mysqli_escape_string($con, $_POST['sup-email']);
         $sup_contact = mysqli_escape_string($con, $_POST['sup-contact']);
-        $sup_address = mysqli_escape_string($con, $_POST['sup-address']);
 
 
         $exp_date = mysqli_escape_string($con, $_POST['expiry-date']);
         $quantity = mysqli_escape_string($con, $_POST['quantity']);
         $price = mysqli_escape_string($con, $_POST['price']);
 
-        if(empty($sup_email) || empty($sup_contact) || empty($sup_address)){
-            $query = "UPDATE medicines_stock SET NAME = '{$med_name}', DIAGNOSE_NAME = '{$diagnose_name}', GENERIC_NAME = '{$generic_name}', EXPIRY_DATE = '{$exp_date}', QUANTITY = '{$quantity}', MRP = '{$price}', SUPPLIER_NAME = '{$sup_name}' ";
+        if(empty($sup_email) || empty($sup_contact)){
+            $query = "UPDATE medicines_stock SET NAME = '{$med_name}', DIAGNOSE_NAME = '{$diagnose_name}', GENERIC_NAME = '{$generic_name}', EXPIRY_DATE = '{$exp_date}', QUANTITY = '{$quantity}', MRP = '{$price}', SUPPLIER_NAME = '{$sup_name}' WHERE ID = '{$med_id}' ";
+            $update = mysqli_query($con, $query);
+            if($update){
+                echo 'success';
+                exit;
+            }
         }
+
+        if(!empty($sup_email) || !empty($sup_contact)){
+            $query1 = "UPDATE medicines_stock SET NAME = '{$med_name}', DIAGNOSE_NAME = '{$diagnose_name}', GENERIC_NAME = '{$generic_name}', EXPIRY_DATE = '{$exp_date}', QUANTITY = '{$quantity}', MRP = '{$price}', SUPPLIER_NAME = '{$sup_name}', SUPPLIER_EMAIL = '{$sup_email}' ,SUPPLIER_CONTACT = '{$sup_contact}' WHERE ID = '{$med_id}' ";
+            $update1 = mysqli_query($con, $query1);
+            if($update1){
+                echo 'success';
+                exit;
+            }
+        }
+        
     }
 ?>
