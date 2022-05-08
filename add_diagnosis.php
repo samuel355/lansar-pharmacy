@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Add New Diagnosis</title>
+    <title>Add New Purchase</title>
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 		<script src="bootstrap/js/jquery.min.js"></script>
@@ -24,7 +24,7 @@
         <!-- header section -->
         <?php
           require "php/header.php";
-          createHeader('bar-chart', 'Add Diagnosis', 'Add New Drugs');
+          createHeader('bar-chart', 'Add Inventory', 'Add New Drugs');
         ?>
         <!-- header section end -->
 
