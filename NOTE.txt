@@ -1,0 +1,8 @@
+Database file is in the "database" directory.
+Export it to local server or online server.
+
+Credentials:
+username: admin
+password: admin123
+
+Good to go.
