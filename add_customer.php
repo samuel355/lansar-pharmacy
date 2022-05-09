@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Add New Customer</title>
+    <title>Add New Patient</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 		<script src="bootstrap/js/jquery.min.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
@@ -22,7 +22,7 @@
         <!-- header section -->
         <?php
           require "php/header.php";
-          createHeader('handshake', 'Add Customer', 'Add New Customer');
+          createHeader('handshake', 'Add Patient', 'Add New Patient');
           // header section end
         ?>
         <div class="row">
