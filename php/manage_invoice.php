@@ -82,8 +82,6 @@
       $customer_name = $row['NAME'];
       $address = $row['ADDRESS'];
       $contact_number = $row['CONTACT_NUMBER'];
-      $doctor_name = $row['DOCTOR_NAME'];
-      $doctor_address = $row['DOCTOR_ADDRESS'];
 
     
       $query = "SELECT * FROM invoices WHERE INVOICE_ID = $invoice_number";
@@ -119,8 +117,6 @@
         <span class="font-weight-bold">Name : </span><?php echo $customer_name; ?><br>
         <span class="font-weight-bold">Address : </span><?php echo $address; ?><br>
         <span class="font-weight-bold">Contact Number : </span><?php echo $contact_number; ?><br>
-        <span class="font-weight-bold">Doctor's Name : </span><?php echo $doctor_name; ?><br>
-        <span class="font-weight-bold">Doctor's Address : </span><?php echo $doctor_address; ?><br>
       </div>
       <div class="col-md-3"></div>
 

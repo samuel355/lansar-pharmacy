@@ -56,8 +56,6 @@
       <td><?php echo $row['NAME']; ?></td>
       <td><?php echo $row['CONTACT_NUMBER']; ?></td>
       <td><?php echo $row['ADDRESS']; ?></td>
-      <td><?php echo $row['DOCTOR_NAME']; ?></td>
-      <td><?php echo $row['DOCTOR_ADDRESS']; ?></td>
       <td>
         <button href="" class="btn btn-info btn-sm" onclick="editCustomer(<?php echo $row['ID']; ?>);">
           <i class="fa fa-pencil"></i>
