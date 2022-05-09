@@ -49,7 +49,7 @@ function validateAndSetup() {
         password.focus();
     } else if (password.value.length < 6) {
         document.getElementById('password_error').style.display = "block";
-        document.getElementById('password_error').innerHTML = "must be of length 6 or more characterss!";
+        document.getElementById('password_error').innerHTML = "must be of length 6 or more characters!";
         password.focus();
     } else if (password.value != confirm_password.value) {
         document.getElementById('password_error').style.display = "none";
@@ -83,7 +83,7 @@ function isSetupDone() {
     xhttp.open("GET", "php/validateCredentials.php?action=is_setup_done", false);
     xhttp.send();
     if (xhttp.responseText == "true")
-        window.location.href = "http://localhost/Pharmacy-Management/login.php";
+        window.location.href = "http://localhost/Lansar/login.php";
 }
 
 function displayForgotPasswordForm() {
@@ -131,7 +131,7 @@ function updateUsernamePassword() {
         password.focus();
     } else if (password.value.length < 6) {
         document.getElementById('password_error').style.display = "block";
-        document.getElementById('password_error').innerHTML = "must be of length 6 or more characterss!";
+        document.getElementById('password_error').innerHTML = "must be of length 6 or more characters!";
         password.focus();
     } else if (password.value != confirm_password.value) {
         document.getElementById('password_error').style.display = "none";

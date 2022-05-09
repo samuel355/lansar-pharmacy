@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 05, 2022 at 01:55 PM
+-- Generation Time: May 09, 2022 at 11:53 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.5
 
@@ -51,18 +51,18 @@ CREATE TABLE `customers` (
   `ID` int(11) NOT NULL,
   `NAME` varchar(20) COLLATE utf16_bin NOT NULL,
   `CONTACT_NUMBER` varchar(10) COLLATE utf16_bin NOT NULL,
-  `ADDRESS` varchar(100) COLLATE utf16_bin NOT NULL,
-  `DOCTOR_NAME` varchar(20) COLLATE utf16_bin NOT NULL,
-  `DOCTOR_ADDRESS` varchar(100) COLLATE utf16_bin NOT NULL
+  `ADDRESS` varchar(100) COLLATE utf16_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf16 COLLATE=utf16_bin;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`ID`, `NAME`, `CONTACT_NUMBER`, `ADDRESS`, `DOCTOR_NAME`, `DOCTOR_ADDRESS`) VALUES
-(4, 'Kiran Suthar', '1234567690', 'Andheri East', 'Anshari', 'Andheri East'),
-(6, 'Aditya', '7365687269', 'Virar West', 'Xyz', 'Virar West');
+INSERT INTO `customers` (`ID`, `NAME`, `CONTACT_NUMBER`, `ADDRESS`) VALUES
+(4, 'Kiran Suthar', '1234567690', 'Andheri East'),
+(6, 'Aditya', '7365687269', 'Virar West'),
+(15, 'Adu Emmanuel', '0279467923', 'Manhyia Palace'),
+(16, 'Osei Kojo', '0937989803', 'Dichemso Kumasi');
 
 -- --------------------------------------------------------
 
@@ -81,10 +81,10 @@ CREATE TABLE `diagnosis` (
 
 INSERT INTO `diagnosis` (`ID`, `DIAGNOSE_NAME`) VALUES
 (1, 'Headache'),
-(2, 'HIV/AIDS'),
-(3, 'Asthma'),
 (4, 'Stomach Ache'),
-(5, 'Malaria');
+(5, 'Malaria'),
+(6, 'Anaemia'),
+(7, 'Asthma');
 
 -- --------------------------------------------------------
 
@@ -106,7 +106,8 @@ CREATE TABLE `invoices` (
 --
 
 INSERT INTO `invoices` (`INVOICE_ID`, `NET_TOTAL`, `INVOICE_DATE`, `CUSTOMER_ID`, `TOTAL_AMOUNT`, `TOTAL_DISCOUNT`) VALUES
-(11, 10, '2022-05-05', 4, 10, 0);
+(11, 10, '2022-05-05', 4, 10, 0),
+(12, 6, '2022-05-08', 4, 6, 0);
 
 -- --------------------------------------------------------
 
@@ -129,7 +130,7 @@ CREATE TABLE `medicines` (
 
 INSERT INTO `medicines` (`ID`, `NAME`, `DIAGNOSE_NAME`, `PACKING`, `GENERIC_NAME`, `SUPPLIER_NAME`) VALUES
 (1, 'Nicip Plus', 'Headache', '10tab', 'Paracetamole', 'BDPL PHARMA'),
-(2, 'Crosin', 'Asthma', '10tab', 'Hdsgvkvajkcbja', 'Kiran Pharma'),
+(2, 'Crosin', 'Asthma', '10TAB', 'Hdsgvkvajkcbja', 'Kiran Pharma'),
 (4, 'Dolo 650', 'HIV/AIDS', '15tab', 'paracetamole', 'BDPL PHARMA'),
 (5, 'Gelusil', 'Stomach Ache', '10tab', 'mint fla', 'Desai Pharma');
 
@@ -159,14 +160,9 @@ CREATE TABLE `medicines_stock` (
 --
 
 INSERT INTO `medicines_stock` (`ID`, `NAME`, `DIAGNOSE_NAME`, `GENERIC_NAME`, `BATCH_ID`, `EXPIRY_DATE`, `QUANTITY`, `MRP`, `RATE`, `SUPPLIER_NAME`, `SUPPLIER_EMAIL`, `SUPPLIER_CONTACT`) VALUES
-(1, 'Crosin', 'Headache', NULL, 'CROS12', '12/34', 10, 260, 26, '', '', ''),
-(2, 'Gelusil', 'Asthma', NULL, 'G327', '12/42', 8, 15, 12, '', '', ''),
-(3, 'Dolo 650', 'HIV/AIDS', NULL, 'DOLO327', '01/23', 19, 30, 24, '', '', ''),
-(4, 'Nicip Plus', 'Stomach Ache', NULL, 'NI325', '05/22', 10, 32, 28, '', '', ''),
-(5, 'Paracetamol', 'Headache', 'para', NULL, '02/23', 50, 5, NULL, '2', 'bdpl@gmail.com', '8645632963'),
-(6, 'Paracetamol', 'Headache', 'paraceta', NULL, '02/25', 50, 3, NULL, 'BDPL PHARMA', 'bdpl@gmail.com', '8645632963'),
-(7, 'Gebedol', 'Headache', 'gebe', NULL, '02/25', 500, 2, NULL, 'BDPL PHARMA', 'bdpl@gmail.com', '8645632963'),
-(8, 'Inhaler', 'Asthma', 'Inhala', NULL, '02/25', 400, 20, NULL, 'BDPL PHARMA', 'bdpl@gmail.com', '8645632963');
+(7, 'Paracetamol', 'Headache', 'para', NULL, '02/26', 500, 5, NULL, 'BDPL PHARMA', 'bdpl@gmail.com', '0246565588'),
+(8, 'Inhaler', 'Headache', 'Inhaler', NULL, '02/25', 200, 5, NULL, 'BDPL PHARMA', 'bdpl@gmail.com', '0502729494'),
+(9, 'Gebedoll', 'Headache', 'gebed', NULL, '02/26', 501, 3, NULL, 'Desai Pharma', 'desai@gmail.com', '0246784984');
 
 -- --------------------------------------------------------
 
@@ -211,7 +207,8 @@ INSERT INTO `sales` (`ID`, `CUSTOMER_ID`, `INVOICE_NUMBER`, `MEDICINE_NAME`, `DI
 (2, 6, 8, 'Crosin', 'CROS12', '12/34', 1, 260, 0, 260),
 (3, 6, 9, 'Crosin', '', '12/34', 1, 260, 0, 260),
 (4, 4, 10, 'Crosin', 'Headache', '12/34', 1, 260, 0, 260),
-(5, 4, 11, 'Paracetamol', 'Headache', '02/23', 2, 5, 0, 10);
+(5, 4, 11, 'Paracetamol', 'Headache', '02/23', 2, 5, 0, 10),
+(6, 4, 12, 'Paracetamol', 'Headache', '02/25', 2, 3, 0, 6);
 
 -- --------------------------------------------------------
 
@@ -311,19 +308,19 @@ ALTER TABLE `admin_credentials`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `diagnosis`
 --
 ALTER TABLE `diagnosis`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `INVOICE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `INVOICE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `medicines`
@@ -335,7 +332,7 @@ ALTER TABLE `medicines`
 -- AUTO_INCREMENT for table `medicines_stock`
 --
 ALTER TABLE `medicines_stock`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `purchases`
@@ -347,7 +344,7 @@ ALTER TABLE `purchases`
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `suppliers`

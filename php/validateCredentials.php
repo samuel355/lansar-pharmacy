@@ -116,7 +116,7 @@
 
       $query = "UPDATE admin_credentials SET PHARMACY_NAME = '$pharmacy_name', ADDRESS = '$address', EMAIL = '$email', CONTACT_NUMBER = '$contact_number', USERNAME = '$username'";
       $result = mysqli_query($con, $query);
-      echo ($result) ? "Details updated..." : "Oops! Somthing wrong happend...";
+      echo ($result) ? "Details updated..." : "Oops! Something wrong happened...";
     }
   }
 
@@ -130,7 +130,7 @@
 
       $query = "UPDATE admin_credentials SET PASSWORD = '$password'";
       $result = mysqli_query($con, $query);
-      echo ($result) ? "Password changed..." : "Oops! Somthing wrong happend...";
+      echo ($result) ? "Password changed..." : "Oops! Something wrong happened...";
     }
   }
 
