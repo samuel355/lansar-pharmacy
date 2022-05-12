@@ -22,8 +22,9 @@
     require "db_connection.php";
     if($con) {
       $seq_no = 0;
-      $query = "SELECT * FROM invoices INNER JOIN customers ON invoices.CUSTOMER_ID = customers.ID";
+      $query = "SELECT * FROM invoices i INNER JOIN sales s ON i.CUSTOMER_ID = s.CUSTOMER_ID INNER JOIN customers c ON c.ID = i.CUSTOMER_ID AND s.INVOICE_NUMBER = i.INVOICE_ID";
       $result = mysqli_query($con, $query);
+ 
       while($row = mysqli_fetch_array($result)) {
         $seq_no++;
         showInvoiceRow($seq_no, $row);
@@ -36,11 +37,11 @@
     <tr>
       <td><?php echo $seq_no; ?></td>
       <td><?php echo $row['INVOICE_ID']; ?></td>
+      <td><?php echo $row['MEDICINE_NAME']; ?></td>
+      <td><?php echo $row['DIAGNOSE_NAME']; ?></td>
       <td><?php echo $row['NAME']; ?></td>
       <td><?php echo $row['INVOICE_DATE']; ?></td>
-      <td><?php echo $row['TOTAL_AMOUNT']; ?></td>
-      <td><?php echo $row['TOTAL_DISCOUNT']; ?></td>
-      <td><?php echo $row['NET_TOTAL']; ?></td>
+      <td class="text-center"><?php echo $row['NET_TOTAL']; ?></td>
       <td>
         <button class="btn btn-warning btn-sm" onclick="printInvoice(<?php echo $row['INVOICE_ID']; ?>);">
           <i class="fa fa-fax"></i>

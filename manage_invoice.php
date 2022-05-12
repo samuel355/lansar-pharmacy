@@ -52,11 +52,11 @@
             			<tr>
             				<th>SL.</th>
             				<th>Invoice No</th>
+            				<th>Medicine</th>
+            				<th>Diagnose</th>
             				<th>Customer Name</th>
             				<th>Date</th>
                     <th>Total Amount</th>
-                    <th>Total Discount</th>
-                    <th>Net Total</th>
                     <th>Action</th>
             			</tr>
             		</thead>
